@@ -31,11 +31,16 @@ class ghost{
 
 	protected function getEmailList(){
 
-		$get_content = implode(null,file($this->fileListEmail));
-		$split = explode("\n",$get_content);
-		return $split;
+		// $get_content = implode(null,file($this->fileListEmail));
+		// $split = explode("\n",$get_content);
+		// return $split;
+		$handle = fopen($this->fileListEmail, "r");
+		while (!feof($handle)) {
 
+			$r = trim(fgets($handle));
 
+			yield $r;
+		}
 	}
 
 	protected function generateVerification(){
