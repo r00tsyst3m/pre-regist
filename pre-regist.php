@@ -36,11 +36,10 @@ class ghost{
 		// return $split;
 		$handle = fopen($this->fileListEmail, "r");
 		while (!feof($handle)) {
-
 			$r = trim(fgets($handle));
-
 			yield $r;
 		}
+		fclose($handle);
 	}
 
 	protected function generateVerification(){
